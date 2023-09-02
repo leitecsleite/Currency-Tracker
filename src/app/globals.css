@@ -19,3 +19,12 @@
 body {
   color: rgb(var(--foreground-rgb));
 }
+
+.custom-border{
+  transition: all 0.2s ease-out;
+}
+
+.custom-border:hover {
+  border-bottom: 1px solid #00CE2C;
+  transition: all 0.3s ease-in;
+}
