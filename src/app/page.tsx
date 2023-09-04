@@ -1,10 +1,16 @@
 import Banner from "@/components/Banner";
+import Main from "@/components/Main";
+
+
 
 export default async function Home() {
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between bg-custom">
-      <Banner/>
-    </main>
+   <>
+     <section className="flex justify-center w-full flex-col ">
+       <Banner/>
+       <Main/>
+     </section>
+   </>
   )
 }
