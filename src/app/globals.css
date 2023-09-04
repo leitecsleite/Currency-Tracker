@@ -28,3 +28,22 @@ body {
   border-bottom: 1px solid #00CE2C;
   transition: all 0.3s ease-in;
 }
+
+.circle-animation{
+  width: 50px;
+  height: 50px;
+  background:#00bc4f; 
+  margin: 0 4px; 
+  border-radius: 50%; 
+  box-shadow: 0 0 0 10px #00bc4f44, 0 0 50px #00bc5f, 0 0 100px #00bc4f; 
+  animation: animate 1s linear infinite; 
+}
+
+@keyframes animate {
+  0%{
+    transform: scale(0); 
+  }
+  100%{
+    transform: scale(0.2);
+  }
+}
