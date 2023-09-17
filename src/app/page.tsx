@@ -1,15 +1,19 @@
 import Banner from "@/components/Banner";
 import Main from "@/components/Main";
+import PhotosProvider from "@/context/contextCash";
 
 
 
-export default async function Home() {
+export default  function Home() {
 
   return (
    <>
      <section className="flex justify-center w-full flex-col ">
        <Banner/>
-       <Main/>
+       <PhotosProvider>
+         <Main/>
+       </PhotosProvider>
+      
      </section>
    </>
   )
