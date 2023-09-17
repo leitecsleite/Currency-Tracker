@@ -36,6 +36,6 @@ export default function PhotosProvider({
       fetchData(); 
     }, []);
   
-    return <cashContext.Provider value={cash}>{children}</cashContext.Provider>;
+    return <cashContext.Provider value={cash as never []}>{children}</cashContext.Provider>;
   }
   
