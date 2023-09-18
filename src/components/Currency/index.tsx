@@ -16,7 +16,7 @@ export default async function Currency() {
       "https://brapi.dev/api/v2/currency/available?search=BRL",
       {
         next: {
-          revalidate: 600,
+          revalidate: 60000,
         },
       }
     );
@@ -30,7 +30,7 @@ export default async function Currency() {
 
   const fetchCurrencyData = async () => {
     try {
-      
+
       const currencyList: any = await fetchCurrencies();
       const response = await fetch(
         `https://brapi.dev/api/v2/currency?currency=${currencyList}`,
