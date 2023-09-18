@@ -1,6 +1,5 @@
 
 import Banner from "@/components/Banner";
-import Currency from "@/components/Currency";
 import Main from "@/components/Main";
 
 export default  function Home() {
@@ -10,7 +9,6 @@ export default  function Home() {
      <section className="flex justify-center w-full flex-col ">
        <Banner/>
          <Main/>
-        <Currency/>
      </section>
    </>
   )
