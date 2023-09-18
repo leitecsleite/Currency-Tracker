@@ -55,9 +55,13 @@ export default async function Currency() {
 
   const currencyData: CurrencyData[] = await fetchCurrencyData();
 
+  if(!currencyData){
+    return null
+  }
+
   const metadeArray = currencyData.length / 2;
 
-  console.log(currencyData);
+  console.log(metadeArray);
 
   return (
     <>
