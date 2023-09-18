@@ -63,7 +63,7 @@ export default async function Currency() {
       <section className="flex justify-between w-full flex-wrap">
         <div className="flex justify-between flex-col">
           {currencyData ? (
-            currencyData.slice(metadeArray).map((currency) => (
+            currencyData.slice(0,2).map((currency) => (
               <>
                 <div
                   key={currency.name}
@@ -92,7 +92,7 @@ export default async function Currency() {
 
         <div className="flex justify-between flex-col">
           {currencyData ? (
-            currencyData.slice(0, metadeArray).map((currency) => (
+            currencyData.slice(3, 6).map((currency) => (
               <>
                 <div
                   key={currency.name}
