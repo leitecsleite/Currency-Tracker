@@ -29,13 +29,27 @@ export default async function Currency() {
   };
 
   const fetchCurrencyData = async () => {
-    const currencyList: any = await fetchCurrencies();
-    const response = await fetch(
-      `https://brapi.dev/api/v2/currency?currency=${currencyList}`
-    );
-    const data = await response.json();
-    const { currency } = data;
-    return currency;
+    try {
+      
+      const currencyList: any = await fetchCurrencies();
+      const response = await fetch(
+        `https://brapi.dev/api/v2/currency?currency=${currencyList}`,
+        {
+          next: {
+            revalidate: 36000,
+          },
+        }
+      );
+
+      const data = await response.json();
+      const { currency } = data;
+
+      return currency;
+
+    } catch (error) {
+      console.log(error);
+    }
+
   };
 
   const currencyData: CurrencyData[] = await fetchCurrencyData();
