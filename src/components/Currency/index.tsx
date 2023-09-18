@@ -1,3 +1,4 @@
+
 type CurrencyData = {
   fromCurrency: string;
   toCurrency: string;
@@ -62,7 +63,7 @@ export default async function Currency() {
     <>
       <section className="flex justify-between w-full flex-wrap">
         <div className="flex justify-between flex-col">
-          {currencyData ? (
+          {currencyData.length > 0 ? (
             currencyData.slice(0,2).map((currency) => (
               <>
                 <div
@@ -91,7 +92,7 @@ export default async function Currency() {
         </div>
 
         <div className="flex justify-between flex-col">
-          {currencyData ? (
+          {currencyData.length > 0  ? (
             currencyData.slice(3, 6).map((currency) => (
               <>
                 <div
