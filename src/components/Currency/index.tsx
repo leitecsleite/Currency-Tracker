@@ -42,7 +42,7 @@ export default async function Currency() {
 
   const metadeArray = currencyData.length / 2;
 
-  console.log(metadeArray);
+  console.log(currencyData);
 
   return (
     <>
