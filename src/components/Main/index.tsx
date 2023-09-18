@@ -8,7 +8,6 @@ export default function Main() {
     <>
       <main className="flex min-h-screen flex-col items-center bg-custom">
         <LastUpdate />
-        <Currency/>
       </main>
     </>
   );
