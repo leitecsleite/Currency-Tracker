@@ -1,6 +1,8 @@
 
 import LastUpdate from "../LastUpdate";
 import Currency from "../Currency";
+import { Suspense } from "react";
+import Loading from "@/app/loading";
 
 
 export default function Main() {
@@ -8,7 +10,9 @@ export default function Main() {
     <>
       <main className="flex min-h-screen flex-col items-center bg-custom">
         <LastUpdate />
-        <Currency/>
+         <Suspense fallback={<Loading/>}>
+          <Currency />
+         </Suspense>
       </main>
     </>
   );

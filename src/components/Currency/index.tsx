@@ -1,4 +1,5 @@
 
+import Currency from "@/lib/data";
 type CurrencyData = {
   fromCurrency: string;
   toCurrency: string;
@@ -11,68 +12,25 @@ type CurrencyData = {
   updatedAtDate: string;
 };
 
-export default async function Currency() {
-  const fetchCurrencies = async () => {
-    const response = await fetch(
-      "https://brapi.dev/api/v2/currency/available?search=BRL",
-      {
-        next: {
-          revalidate: 60000,
-        },
-      }
-    );
-    const data = await response.json();
-    const { currencies } = data;
-    const currencyNames = currencies.map(
-      (currency: { name: string }) => currency.name
-    );
-    return currencyNames.join("%2C");
-  };
+export default async function Cards({}) {
+  const currencyData: CurrencyData[] = await Currency();
 
-  const fetchCurrencyData = async () => {
-    try {
-
-      const currencyList: any = await fetchCurrencies();
-      const response = await fetch(
-        `https://brapi.dev/api/v2/currency?currency=${currencyList}`,
-        {
-          next: {
-            revalidate:60000
-          },
-        }
-      );
-
-      const data = await response.json();
-      const { currency } = data;
-
-      return currency;
-
-    } catch (error) {
-      console.log(error);
-    }
-
-  };
-
-  const currencyData: CurrencyData[] = await fetchCurrencyData();
-
-  if(!currencyData){
-    return null
+  if (!currencyData) {
+    return null;
   }
-
-  const metadeArray = currencyData.length / 2;
 
   return (
     <>
       <section className="flex justify-between w-full flex-wrap">
         <div className="flex justify-between flex-col">
           {currencyData.length > 0 ? (
-            currencyData.slice(0,metadeArray).map((currency, index) => (
+            currencyData.map((currency, index) => (
               <>
                 <div
                   key={index}
                   className="flex w-520 h-36 px-32 py-30 items-center gap-y-6 rounded-lg border border-gray-700 bg-gray-900"
                 >
-                  <div  className="w-279.287 h-24  flex justify-center align-middle flex-col">
+                  <div className="w-279.287 h-24  flex justify-center align-middle flex-col">
                     <p className="text-gray-400 font-poppins text-base font-normal leading-49.371">
                       {currency.name.split("/")[0].trim()}
                     </p>
