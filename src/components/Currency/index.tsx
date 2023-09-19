@@ -20,7 +20,7 @@ type CurrencyData = {
 export default function Cards() {
   const [currencyData, setCurrencyData] = useState<CurrencyData[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isMoreCards, setIsMoreCards] = useState<number>(3);
+  const [isMoreCards, setIsMoreCards] = useState<number>(4);
 
   useEffect(() => {
     async function getData() {
@@ -34,21 +34,22 @@ export default function Cards() {
 
   function handleMoreCard() {
     if (isMoreCards < currencyData.length) {
-      setIsMoreCards((cards) => cards + 3);
+      setIsMoreCards((cards) => cards + 2);
     }
   }
 
   return (
     <>
       {isLoading ? (
-        <section className="flex justify-between w-full flex-wrap">
-          <div className="flex justify-between flex-wrap">
+        <section className="flex justify-center my-6">
+          <div className="flex w-80% max-w-screen-2xl justify-center align-middle
+           flex-wrap gap-3 m-4 ">
             {currencyData.length > 0 ? (
               currencyData.slice(0, isMoreCards).map((currency, index) => (
                 <>
                   <div
                     key={index}
-                    className="flex w-1/3 h-36 px-32 py-30 items-center gap-y-6 rounded-lg border border-gray-700 bg-gray-900 box-border"
+                    className="flex  w-520 h-36 px-32 py-30 items-center  rounded-lg border border-gray-700 bg-gray-900 box-border max-sm:w-96"
                   >
                     <div className="w-279.287 h-24  flex justify-center align-middle flex-col">
                       <p className="text-gray-400 font-poppins text-base font-normal leading-49.371">
@@ -63,7 +64,6 @@ export default function Cards() {
                       </p>
                     </div>
                   </div>
-                  <br></br>
                 </>
               ))
             ) : (
@@ -72,12 +72,20 @@ export default function Cards() {
           </div>
         </section>
       ) : (
-        <section className="flex justify-between w-full flex-wrap">
-          <div className="flex justify-between flex-wrap">
+        <section className="flex justify-center my-6">
+          <div className="flex  w-80% max-w-screen-2xl justify-center flex-wrap gap-3 m-4">
             <Stack spacing={1}>
               <Skeleton
                 variant="rounded"
-                width={366}
+                height={144}
+                className=' w-520 max-sm:w-96'
+                sx={{ bgcolor: "grey.900" }}
+              />
+            </Stack>
+            <Stack spacing={1}>
+              <Skeleton
+                variant="rounded"
+                className=' w-520 max-sm:w-96'
                 height={144}
                 sx={{ bgcolor: "grey.900" }}
               />
@@ -85,7 +93,7 @@ export default function Cards() {
             <Stack spacing={1}>
               <Skeleton
                 variant="rounded"
-                width={366}
+                className=' w-520 max-sm:w-96'
                 height={144}
                 sx={{ bgcolor: "grey.900" }}
               />
@@ -93,7 +101,7 @@ export default function Cards() {
             <Stack spacing={1}>
               <Skeleton
                 variant="rounded"
-                width={366}
+                className=' w-520 max-sm:w-96'
                 height={144}
                 sx={{ bgcolor: "grey.900" }}
               />
@@ -102,7 +110,7 @@ export default function Cards() {
         </section>
       )}
       {isMoreCards < currencyData.length && (
-        <button onClick={handleMoreCard} className="text-gray-400">
+        <button onClick={handleMoreCard} className="text-gray-400 bg-gray-900 p-3 rounded-lg hover:brightness-90 ">
           VER MAIS
         </button>
       )}
