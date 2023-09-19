@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Skeleton from "@mui/material/Skeleton";
 import Stack from "@mui/material/Stack";
 
+
 type CurrencyData = {
   fromCurrency: string;
   toCurrency: string;
@@ -25,8 +26,13 @@ export default function Cards() {
   useEffect(() => {
     async function getData() {
       const response = await Currency();
-
-      setCurrencyData(response);
+      const data:CurrencyData[] = response.filter((res:CurrencyData) => 
+      res.fromCurrency === 'USD' || res.fromCurrency === 'GBT'||
+      res.fromCurrency === 'BTC' || res.fromCurrency === 'EUR'||
+      res.fromCurrency === 'JPY' || res.fromCurrency === 'AUD'||
+      res.fromCurrency === 'CAD' || res.fromCurrency === 'ARS'||
+      res.fromCurrency === 'RMB' )
+      setCurrencyData(data);
       setIsLoading(true);
     }
     getData();
@@ -37,6 +43,7 @@ export default function Cards() {
       setIsMoreCards((cards) => cards + 2);
     }
   }
+
 
   return (
     <>
@@ -49,8 +56,11 @@ export default function Cards() {
                 <>
                   <div
                     key={index}
-                    className="flex  w-520 h-36 px-32 py-30 items-center  rounded-lg border border-gray-700 bg-gray-900 box-border max-sm:w-96"
+                    className="flex  w-520 h-36 px-32 py-30 items-center justify-between rounded-lg border border-gray-700 bg-gray-900 box-border max-sm:w-96"
                   >
+                    <div className=" flex align-middle justify-center">
+                        <img src={`https://res.cloudinary.com/djugggwq3/image/upload/v1695150583/${currency.fromCurrency}.png`} alt={currency.fromCurrency}  />
+                    </div>
                     <div className="w-279.287 h-24  flex justify-center align-middle flex-col">
                       <p className="text-gray-400 font-poppins text-base font-normal leading-49.371">
                         {currency.name.split("/")[0].trim()}
