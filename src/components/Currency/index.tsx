@@ -56,10 +56,10 @@ export default function Cards() {
                 <>
                   <div
                     key={index}
-                    className="flex  w-520 h-36 px-32 py-30 items-center justify-between rounded-lg border border-gray-700 bg-gray-900 box-border max-sm:w-96"
+                    className="flex  w-520 h-36 px-32 py-30 items-center justify-between rounded-lg border border-gray-700 bg-gray-900 box-border max-sm:w-96 max-sm:px-10 max-sm:py-10 "
                   >
-                    <div className=" flex align-middle justify-center">
-                        <img src={`https://res.cloudinary.com/djugggwq3/image/upload/v1695150583/${currency.fromCurrency}.png`} alt={currency.fromCurrency}  />
+                    <div className="flex align-middle justify-center ">
+                        <img className=" w-12 h-12 box-border" src={`https://res.cloudinary.com/djugggwq3/image/upload/v1695150583/${currency.fromCurrency}.png`} alt={currency.fromCurrency}  />
                     </div>
                     <div className="w-279.287 h-24  flex justify-center align-middle flex-col">
                       <p className="text-gray-400 font-poppins text-base font-normal leading-49.371">
