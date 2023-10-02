@@ -91,9 +91,6 @@ export default function Cards() {
                           .toString()
                           .replace(".", ",")}
                       </p>
-                      <time aria-label=" A Última atualização" className="text-gray-400 font-poppins">
-                        {currency.updatedAtDate.replace(/-/g, "/")}
-                      </time>
                     </div>
                   </div>
                 </>
