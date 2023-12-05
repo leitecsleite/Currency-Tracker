@@ -5,9 +5,14 @@ import { useEffect, useState } from "react";
 import Skeleton from "@mui/material/Skeleton";
 import Stack from "@mui/material/Stack";
 
+type Values = {
+  code: string; 
+  value: number; 
+}
+
 type CurrencyData = {
   code: string;
-  value: number;
+  value: Values;
 };
 
 export default function Cards() {
