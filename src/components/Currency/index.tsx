@@ -6,8 +6,8 @@ import Skeleton from "@mui/material/Skeleton";
 import Stack from "@mui/material/Stack";
 
 type Values = {
-  code: string; 
-  value: number; 
+  code: string;
+  value: number;
 }
 
 type CurrencyData = {
@@ -24,11 +24,14 @@ export default function Cards() {
     async function getData() {
       try {
         const response = await Currency();
+
         const filteredCurrencies: CurrencyData[] = Object.entries(response.data)
           .filter(([code, _]) =>
             ["USD", "GBT", "BTC", "EUR", "JPY", "AUD", "CAD", "ARS", "CNY"].includes(code)
           )
-          .map(([code, value]) => ({ code, value }));
+          .map(([code, value]) => ({ code, value: value as Values }));
+
+        console.log(filteredCurrencies, "dentro do objeto");
 
         setCurrencyData(filteredCurrencies);
         setIsLoading(true);
@@ -46,7 +49,7 @@ export default function Cards() {
       setIsMoreCards((cards) => cards + 2);
     }
   }
- console.log(currencyData)
+  console.log(currencyData)
   return (
     <>
       {isLoading ? (
