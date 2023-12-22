@@ -8,11 +8,7 @@ export default  function Home() {
   return (
    <>
      <Head>
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7860211370494598"
-          crossOrigin="anonymous"
-        ></script>
+        <meta name="google-adsense-account" content="ca-pub-7860211370494598"></meta>
       </Head>
      <section className="flex justify-center w-full flex-col bg-custom">
         <Banner/>
